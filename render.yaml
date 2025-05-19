@@ -12,7 +12,7 @@ services:
       - key: APP_KEY
         value: base64:whVfKLWsCR1plf81GYEZCh453f9PFddv22ggNmbyZR0=
       - key: APP_DEBUG
-        value: false
+        value: true
       - key: APP_URL
         value: https://laravel-app.onrender.com
       - fromDatabase:
