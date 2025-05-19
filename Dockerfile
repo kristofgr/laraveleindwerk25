@@ -16,7 +16,9 @@ COPY . .
 
 # Install composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-intl
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-intl \
+    && php artisan migrate --force \
+    && php artisan db:seed --force
 
 # Change DocumentRoot to /public
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
