@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: base64:whVfKLWsCR1plf81GYEZCh453f9PFddv22ggNmbyZR0=
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://laravel-app.onrender.com
+      - fromDatabase:
+          name: laraveleindwerk25
+          property: host
+          key: DB_HOST
+      - fromDatabase:
+          name: laraveleindwerk25
+          property: database
+          key: DB_DATABASE
+      - fromDatabase:
+          name: laraveleindwerk25
+          property: user
+          key: DB_USERNAME
+      - fromDatabase:
+          name: laraveleindwerk25
+          property: password
+          key: DB_PASSWORD
